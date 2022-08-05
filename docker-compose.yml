@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  l2tp-ipsec:
+    image: hwdsl2/ipsec-vpn-server
+    restart: always
+    privileged: true
+    env_file: ./.env
+    ports:
+      - "500:500/udp"
+      - "4500:4500/udp"
+    volumes:
+      - ikev2-vpn-data:/etc/ipsec.d
+volumes:
+  ikev2-vpn-data:
